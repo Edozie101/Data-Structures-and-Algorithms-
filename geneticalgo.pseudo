@@ -1,0 +1,25 @@
+FUNCTION GENETIC-ALGO(population,fitness-function)
+
+  RETURN individual
+
+
+  repeat
+
+    initialize  new-population with B
+
+    FOR i-1 to size(population)
+      //selection
+      x = random-select(population,fitness-function)
+      x = random-select(population,fitness-function)
+      child = cross-over(x,y)
+      mutate(child) with a small random probablility
+      add child to new population
+
+    ENDFOR
+
+    population = new-population
+
+  UNTIL some individual is fit enough or enough time has elapsed
+
+  RETURN the best individual in population w.r.t fitness-function
+ENDFUNCTION

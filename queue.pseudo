@@ -1,0 +1,22 @@
+QUEUE(n)
+
+Q = Array.new(n)
+/* has a Q.head and a Q.tail which correlate to the index of the next location o*/
+
+
+ENQUEUE(Q,x)
+
+Q[Q.tail] = x
+IF Q.tail == Q.length
+  Q.tail = 1
+ELSE
+  Q.tail = Q.tail + 1
+ENDIF
+
+
+DEQUEUE(Q,x)
+x = Q[Q.head]
+IF Q.head == Q.length
+  Q.head = 1
+ELSE Q.head = Q.head + 1
+ENDIF

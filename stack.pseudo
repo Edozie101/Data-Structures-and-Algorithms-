@@ -1,0 +1,24 @@
+STACK:
+  S = Array.new()
+
+
+
+STACK-EMPTY(S):
+
+  IF S.top() == 0
+    RETURN TRUE
+  ELSE
+    RETURN FALSE
+
+PUSH(S,x):
+
+S.top = S.top + 1
+S[S.top] = x
+
+
+POP(S):
+  IF STACK-EMPTY(S)
+    ERROR "underflow"
+  ELSE
+    S.top = S.top -1
+    RETURN S[S.top+1]

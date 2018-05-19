@@ -1,0 +1,12 @@
+FUNCTION PQ(C,P)
+C n element array , P is a priority QUEUE
+output array C sorted by the total order relation
+for i =1 to n do :
+  c
+for i = 1 to n
+  c =
+
+
+
+
+ENDFUNCTION

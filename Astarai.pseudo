@@ -1,0 +1,31 @@
+FUNCTION Astar(initialState,GoalTest)
+
+RETURN SUCCESS or FAILURE /* f(n) = g(n) + h(n) */
+
+  fronteir = Heap.new(initialState)
+  explored = Set.new
+
+  WHILE NOT fronteir.isEmpty()
+    state = fronteir.deleteMin()
+    explored.add(state)
+
+    IF GoalTest(state)
+      RETURN SUCCESS(state)
+    ENDIF
+
+    FOR neighbor in state.neighbors()
+      IF neighbor NOT in fronteir AND explored
+        fronteir.add(neighbor)
+      ELSE IF neighbor  in fronteir
+        neighbor.decreaseKey
+
+      ENDIF
+
+    ENDFOR
+
+  ENDWHILE
+
+  RETURN FAILURE
+
+
+ENDFUNCTION

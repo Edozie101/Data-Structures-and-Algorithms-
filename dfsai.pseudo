@@ -1,0 +1,21 @@
+FUNCTION DFS(initialState,goalTest)
+  RETURN SUCCESS or FAILURE
+
+  frontier = Stack.new(initialState)
+  explored = Set.new()
+
+  WHILE NOT frontier.isEmpty()
+    state = frontier.pop()
+    explored.add(state)
+
+    IF goalTest(state)
+      RETURN SUCCESS
+    ENDIF
+
+    FOR neighbor in state.neighbors
+      IF neighbor NOT in frontier U explored
+        frontier.push(neighbor)
+      ENDIF
+    ENDFOR
+  ENDWHILE
+ENDFUNCTION

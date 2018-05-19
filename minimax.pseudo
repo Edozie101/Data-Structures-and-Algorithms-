@@ -1,0 +1,55 @@
+FUNCTION MINIMIZE(state)
+
+  return TUPLE of (STATE,UTILITY)
+
+  IF TERMINAL-TEST(state)
+    return(NULL,EVAL(state))
+  ENDIF
+
+  minChild,minUtility = (NULL, INF)
+
+  FOR child in state.children()
+    (_,utility) = MAXIMIZE(child)
+      IF utility < minUtility:
+        (minChild,minUtility) = (child,utility) ENDIF
+  ENDFOR
+
+
+  RETURN (minChild,minUtility)
+
+
+ENDFUNCTION
+
+FUNCTION MAXIMIZE(state)
+
+  return TUPLE of (STATE,UTILITY)
+
+  IF TERMINAL-TEST(state)
+    return(NULL,EVAL(state))
+  ENDIF
+
+  minChild,minUtility = (NULL, INF)
+
+  FOR child in state.children()
+    (_,utility) = MINIMIZE(child)
+      IF utility < minUtility:
+        (minChild,minUtility) = (child,utility)
+      ENDIF
+  ENDFOR
+
+
+  RETURN (minChild,minUtility)
+
+
+ENDFUNCTION
+
+
+FUNCTION DECISION(state):
+  returns STATE:
+
+  (child,_) = MAXIMIZE(state)
+
+  RETURN child
+  //returns child with highest utility for max
+
+ENDFUNCTION

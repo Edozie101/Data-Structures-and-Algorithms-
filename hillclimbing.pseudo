@@ -1,0 +1,16 @@
+FUNCTION HILL-CLIMBING(initialState)
+  returns State that is a local maximum
+
+  initialize current = initialState
+
+  LOOP do
+    neighbor = a highest value successor of current
+
+    IF neighbor.value <= current.value:
+        RETURN current.state
+
+    ENDIF
+
+    current = neighbor
+  ENDLOOP
+ENDFUNCTION

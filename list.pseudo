@@ -1,0 +1,45 @@
+Position:
+Key
+NextNodepointer
+PrevNodepointer
+
+
+If x prev = nil
+x has no predecessor and is the first Element or Head
+
+If x.next = nil
+x has no successor and is the last Element or Tail
+
+
+
+FUNCTION List-Search(L,k)
+
+x = L.head
+while x ≠ Nil and x.key ≠ k
+  x = x.next
+return x
+
+ENDFUNCTION
+
+FUNCTION List-Insert(L,k)
+x.next = L.head
+if L.head ≠ Nil
+  L.head.prev = x
+L.head = x
+x.prev = Nil
+
+ENDFUNCTION
+
+FUNCTION List-Delete(L,x)
+IF x.prev ≠ Nil
+  x.prev.next = x.next
+ELSE L.HEAD = x.next
+IF x.next ≠ Nil
+  x.next.prev = x.prev
+
+ENDFUNCTION
+
+Sentinels - Dummy object that allow us to simplify boundry condtitions
+
+L.nil.next basically the same as L.head
+L.nil.prev basically the same as L.tail

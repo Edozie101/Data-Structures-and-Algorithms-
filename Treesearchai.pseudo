@@ -1,0 +1,19 @@
+FUNCTION TREE-SEARCH(initialState,goalTest)
+  RETURN SUCCESS or FAILURE:
+    #intialstate is the first to move to frontier
+    initialize frontier with initialState
+
+    WHILE NOT frontier.isEmpty():
+      state = frontier.remove()
+
+      IF goalTest(state):
+        return SUCCESS(state)
+
+      FOR neighbor in state.neighbors():
+        frontier.add(neighbor)
+      ENDFOR
+    ENDWHILE
+    
+    RETURN FAILURE
+
+ENDFUNCTION

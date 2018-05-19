@@ -1,0 +1,18 @@
+FUNCTION Bucketsort(A)
+  let B[0..n-1] be a new array
+  n = A.length
+  FOR i = 0 to n-1
+    initialize B[i] = List.new()
+  ENDFOR
+
+  FOR i= 1 to n
+    B[nA[i]] = A[i]
+  ENDFOR
+
+  FOR i = 0 to n-1
+    sort  B[i] with insertion sort
+  ENDFOR
+
+  Concatenate lists B[0] ..B[1] ... B[n-1] together in order
+
+ENDFUNCTION

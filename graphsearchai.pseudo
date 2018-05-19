@@ -1,0 +1,19 @@
+FUNCTION GraphSearch(initialState,goalTest)
+  RETURN SUCCESS or FAILURE
+
+  initialize frontier with initialState
+  explored = Set.new()
+  WHILE NOT frontier.isEmpty()
+    state= frontier.remove()
+    explored.add(state)
+
+    if goalTest(state)
+      RETURN SUCCESS(state)
+
+    FOR neighbor in state neighbors():
+      if neighbor not in frontier U explored:
+        frontier.add(neighbor)
+    ENDFOR
+  ENDWHILE
+  RETURN FAILURE
+ENDFUNCTION

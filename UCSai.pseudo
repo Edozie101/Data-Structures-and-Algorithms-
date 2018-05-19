@@ -1,0 +1,23 @@
+FUNCTION UCS(initialState,goalTest):
+  RETURN SUCCESS or FAILURE :  /* Cost f(n) = g(n)
+
+  frontier = Heap.new(initialState)
+  explored = Set.new()
+
+  WHILE NOT frontier.isEmpty()
+    state = frontier.deleteMin()
+    explored.add(state)
+
+    IF goalTest(state):
+      RETURN SUCCESS
+    ENDIF
+
+    FOR neighbor in state.neighbors()
+      IF neighbor NOT in frontier U explored:
+        frontier.insert(state)
+      ELSE IF neighbor in frontier:
+        frontier.decreaseKey(neighbor)
+      ENDIF
+    ENDFOR
+  ENDWHILE
+ENDFUNCTION

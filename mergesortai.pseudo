@@ -1,0 +1,44 @@
+FUNCTION MERGE-SORT(A,p,r)
+  IF p < r
+    q = [(p+r)/2]
+    MERGE-SORT(A,p,q)
+    MERGE-SORT(A,q+1,r)
+    MERGE(A,p,q,r)
+  ENDIF
+
+ENDFUNCTION
+
+
+
+
+FUNCTION MERGE(A,p,q,r)
+A is an array  and p, q , r ae indices into the array. such that p<= q < r
+The procedure assumes that sub array A[p..q] and A[q+1..r]
+
+n1 = q - p + 1
+n2 = r - q
+
+let L[1..n1+1] and R[1..n2 + 1]
+FOR i = 1 to n1
+//
+  L[i] = A[p+i -1 ]
+ENDFOR
+
+
+
+L[n1+1] = infinity
+R[n2 +1] = infinity
+
+i = 1
+j = 1
+FOR k = p to r
+  IF L[i] <= R[J]
+    A[k] = L[i]
+    i = i+1
+  ELSE
+    A[k] = R[j]
+    j = j+1
+  ENDIF
+
+ENDFOR
+ENDFUNCTION

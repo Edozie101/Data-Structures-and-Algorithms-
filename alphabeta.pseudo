@@ -1,0 +1,75 @@
+FUNCTION MINIMIZE(state,a,b)
+
+  return TUPLE of (STATE,UTILITY)
+
+  IF TERMINAL-TEST(state)
+    return(NULL,EVAL(state))
+  ENDIF
+
+  minChild,minUtility = (NULL, INF)
+
+  FOR child in state.children()
+    (_,utility) = MAXIMIZE(child)
+      IF utility < minUtility:
+        (minChild,minUtility) = (child,utility)
+      ENDIF
+
+      IF minUtility <= a:
+        break
+        // dont explore any more cut the branch
+      ENDIF
+      IF minUtility < B:
+        B = minutility
+        //update beta
+      ENDIF
+
+  ENDFOR
+
+
+  RETURN (minChild,minUtility)
+
+
+ENDFUNCTION
+
+FUNCTION MAXIMIZE(state)
+
+  return TUPLE of (STATE,UTILITY)
+
+  IF TERMINAL-TEST(state)
+    return(NULL,EVAL(state))
+  ENDIF
+
+  maxChild,maxUtility = (NULL, -INF)
+
+  FOR child in state.children()
+    (_,utility) = MINIMIZE(child)
+      IF utility > maxUtility:
+        (maxChild,maxUtility) = (child,utility)
+      ENDIF
+      IF utility >  maxUtility:
+        (maxChild,maxUtility) = (child,utility)
+      ENDIF
+      IF maxUtility >= a:
+        break
+        // dont explore any more
+      ENDIF
+      IF maxUtility > a:
+        a = maxUtility
+        //update alpha
+      ENDIF
+
+  ENDFOR
+
+
+ENDFUNCTION
+
+
+FUNCTION DECISION(state):
+  returns STATE:
+
+  (child,_) = MAXIMIZE(state,-inf,+inf)
+
+  RETURN child
+  //returns child with highest utility for max
+
+ENDFUNCTION

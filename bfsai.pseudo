@@ -1,0 +1,23 @@
+FUNCTION BFS(initialState,goalTest)
+  RETURN SUCCESS or FAILURE
+
+  frontier = QUEUE.new(initialState)
+  explored = Set.new()
+
+  WHILE NOT frontier.isEmpty()
+    state = frontier.remove
+    explored.add(state)
+
+    IF goalTest(state)
+      RETURN SUCCESS(state)
+
+    ENDIF
+
+    FOR neighbor in state.neighbors
+      IF neighbor not in frontier U explored
+        frontier.add(neighbor)
+      ENDIF
+    ENDFOR
+  ENDWHILE
+  RETURN FAILURE
+ENDFUNCTION
